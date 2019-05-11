@@ -10,6 +10,15 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+
+  TextEditingController celsiusController = TextEditingController();
+  TextEditingController fahrenheitController = TextEditingController();
+
+  void _resetFields() {
+    celsiusController.text = "";
+    fahrenheitController.text = "";
+  }
+
   @override
   Widget build(BuildContext context) {
     AppBar appBar = AppBar(
@@ -19,7 +28,7 @@ class _HomeState extends State<Home> {
       actions: <Widget>[
         IconButton(
           icon: Icon(Icons.refresh),
-          onPressed: () {},
+          onPressed: _resetFields,
         )
       ],
     );
@@ -54,6 +63,7 @@ class _HomeState extends State<Home> {
       ),
       textAlign: TextAlign.center,
       style: styleField,
+      controller: celsiusController,
     );
 
     TextField tempFahrenheit = TextField(
@@ -64,6 +74,7 @@ class _HomeState extends State<Home> {
       ),
       textAlign: TextAlign.center,
       style: styleField,
+      controller: fahrenheitController,
     );
 
     Column column = Column(
