@@ -15,3 +15,23 @@ class _HomeState extends State<Home> {
     return Container();
   }
 }
+
+Widget build(BuildContext context) {
+  AppBar appBar = AppBar(
+    title: Text("Conversor de Temperatura"),
+    centerTitle: true,
+    backgroundColor: Colors.blue,
+    actions: <Widget>[
+      IconButton(
+          icon: Icon(Icons.refresh),
+          onPressed: () {},
+      )
+    ],
+  );
+
+  Scaffold scaffold = Scaffold(
+    appBar: appBar,
+  );
+
+  return scaffold;
+}
