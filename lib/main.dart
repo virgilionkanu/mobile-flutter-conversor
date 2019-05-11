@@ -37,8 +37,13 @@ class _HomeState extends State<Home> {
     );
 
     Container containerBtn = Container(
-      height: 50.0,
+      height: 200.0,
       child: raisedButton,
+    );
+
+    Padding padding = Padding(
+      padding: EdgeInsets.only(top: 20.0),
+      child: containerBtn,
     );
 
     TextField tempCelsius = TextField(
@@ -67,14 +72,19 @@ class _HomeState extends State<Home> {
         icon,
         tempCelsius,
         tempFahrenheit,
-        containerBtn,
+        padding,
       ],
+    );
+
+    SingleChildScrollView singleChildScrollView = SingleChildScrollView(
+      child: column,
+      padding: EdgeInsets.fromLTRB(10.0, 0, 10.0, 0),
     );
 
     Scaffold scaffold = Scaffold(
       appBar: appBar,
       backgroundColor: Colors.white,
-      body: column,
+      body: singleChildScrollView,
     );
 
     return scaffold;
