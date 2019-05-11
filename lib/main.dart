@@ -14,6 +14,8 @@ class _HomeState extends State<Home> {
   TextEditingController celsiusController = TextEditingController();
   TextEditingController fahrenheitController = TextEditingController();
 
+  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
   void _resetFields() {
     celsiusController.text = "";
     fahrenheitController.text = "";
@@ -46,7 +48,11 @@ class _HomeState extends State<Home> {
     TextStyle styleField = TextStyle(color: Colors.blueAccent);
 
     RaisedButton raisedButton = RaisedButton(
-      onPressed: _converter,
+      onPressed: (){
+        if(_formKey.currentState.validate()){
+          _converter();
+        }
+      },
       child: Text("Calcular"),
       color: Colors.blueAccent,
     );
@@ -61,7 +67,7 @@ class _HomeState extends State<Home> {
       child: containerBtn,
     );
 
-    TextField tempCelsius = TextField(
+    TextFormField tempCelsius = TextFormField(
       keyboardType: TextInputType.number,
       decoration: InputDecoration(
         labelText: "Temperatura em graus Celsius",
@@ -70,9 +76,14 @@ class _HomeState extends State<Home> {
       textAlign: TextAlign.center,
       style: styleField,
       controller: celsiusController,
+      validator: (value) {
+        if(value.isEmpty){
+          return "Informe um valor";
+        }
+      },
     );
 
-    TextField tempFahrenheit = TextField(
+    TextFormField tempFahrenheit = TextFormField(
       keyboardType: TextInputType.number,
       decoration: InputDecoration(
         labelText: "Temperatura em graus Fahrenheit",
@@ -81,6 +92,11 @@ class _HomeState extends State<Home> {
       textAlign: TextAlign.center,
       style: styleField,
       controller: fahrenheitController,
+      validator: (value) {
+        if(value.isEmpty){
+          return "Informe um valor";
+        }
+      },
     );
 
     Column column = Column(
@@ -93,8 +109,13 @@ class _HomeState extends State<Home> {
       ],
     );
 
-    SingleChildScrollView singleChildScrollView = SingleChildScrollView(
+    Form form = Form(
       child: column,
+      key: _formKey,
+    );
+
+    SingleChildScrollView singleChildScrollView = SingleChildScrollView(
+      child: form,
       padding: EdgeInsets.fromLTRB(10.0, 0, 10.0, 0),
     );
 
