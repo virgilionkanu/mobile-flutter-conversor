@@ -41,10 +41,11 @@ class _HomeState extends State<Home> {
       ],
     );
 
-    Icon icon = Icon(Icons.wb_sunny, size: 120, color: Colors.yellow,);
+    Image imgLogo = Image.asset("assets/images/logo.png", height: 120, width: 120,);
 
-    TextStyle styleDecoration_first = TextStyle(color: Colors.blueAccent, fontSize: 20);
-    TextStyle styleDecoration_second = TextStyle(color: Colors.amberAccent, fontSize: 20);
+    //Icon icon = Icon(Icons.wb_sunny, size: 120, color: Colors.yellow,);
+
+    TextStyle styleDecoration = TextStyle(color: Colors.blueAccent, fontSize: 20);
     TextStyle styleField = TextStyle(color: Colors.blueAccent);
 
     RaisedButton raisedButton = RaisedButton(
@@ -71,7 +72,7 @@ class _HomeState extends State<Home> {
       keyboardType: TextInputType.number,
       decoration: InputDecoration(
         labelText: "Temperatura em graus Celsius",
-        labelStyle: styleDecoration_first,
+        labelStyle: styleDecoration,
       ),
       textAlign: TextAlign.center,
       style: styleField,
@@ -87,7 +88,7 @@ class _HomeState extends State<Home> {
       keyboardType: TextInputType.number,
       decoration: InputDecoration(
         labelText: "Temperatura em graus Fahrenheit",
-        labelStyle: styleDecoration_second,
+        labelStyle: styleDecoration,
       ),
       textAlign: TextAlign.center,
       style: styleField,
@@ -102,10 +103,8 @@ class _HomeState extends State<Home> {
     Column column = Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: <Widget>[
-        icon,
-        tempCelsius,
-        tempFahrenheit,
-        padding,
+        //icon, tempCelsius, tempFahrenheit, padding,
+        imgLogo, tempCelsius, tempFahrenheit, padding,
       ],
     );
 
