@@ -53,6 +53,7 @@ class _HomeState extends State<Home> {
         if(_formKey.currentState.validate()){
           _converter();
         }
+        FocusScope.of(context).requestFocus(FocusNode());
       },
       child: Text("Calcular"),
       color: Colors.blueAccent,
